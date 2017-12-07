@@ -1,5 +1,3 @@
-package ex5;
-
 /**
  * Created by aleksandr on 20.11.2017.
  */

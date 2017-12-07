@@ -1,5 +1,3 @@
-package ex5;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -9,7 +7,6 @@ import java.util.Scanner;
  */
 public class Graph {
     private LLElement<?>[] graph;
-    private Scanner scanner;
 
     public Graph() {
     }
@@ -25,8 +22,9 @@ public class Graph {
 
     /* read a graph from the file */
     public boolean readGraph(File file) {
+        Scanner scanner;
         try {
-            this.scanner = new Scanner(file);
+            scanner = new Scanner(file);
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
 
@@ -42,7 +40,7 @@ public class Graph {
         this.graph = new LLElement<?>[numOfLines];
 
         try {
-            this.scanner = new Scanner(file);
+            scanner = new Scanner(file);
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
 
@@ -85,6 +83,7 @@ public class Graph {
         for (int i = 0; i < graph.length; i++) {
             System.out.print(i + ": ");
 
+            @SuppressWarnings("unchecked")
             LLElement<Integer> currElement = (LLElement<Integer>) graph[i];
             while (currElement != null) {
                 System.out.print(currElement.getData() + " ");
@@ -103,6 +102,7 @@ public class Graph {
     void dfs(int start, boolean visited[], int pred[]) {
         visited[start] = true;
 
+        @SuppressWarnings("unchecked")
         LLElement<Integer> currElement = (LLElement<Integer>) graph[start];
         while (currElement != null) {
             if (!visited[currElement.getData()]) {
